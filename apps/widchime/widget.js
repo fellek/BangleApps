@@ -14,7 +14,10 @@
     const now = new Date(),
       h = now.getHours(), m = now.getMinutes(),
       s = now.getSeconds(), ms = now.getMilliseconds();
-    if (h!==lastHour && m===0) chime();
+      // don't chime at night hours.
+    n = true;
+    if (h > 6 && h < 22) n = false;
+    if (h!==lastHour && m===0 && n === true) chime();
     lastHour = h;
     // check again when this hour is over
     const mLeft = 60-m, sLeft = (mLeft*60)-s, msLeft = (sLeft*1000)-ms;
