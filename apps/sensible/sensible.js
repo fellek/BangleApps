@@ -34,22 +34,24 @@ let isNewMagData = false;
 // Menus
 let mainMenu = {
   "": { "title": "--  SensiBLE  --" },
+  " - Close - ": ()=>load(),
   "Acceleration": function() { E.showMenu(accMenu); isAccMenu = true; },
   "Barometer": function() { E.showMenu(barMenu); isBarMenu = true; },
   "GPS": function() { E.showMenu(gpsMenu); isGpsMenu = true; },
   "Heart Rate": function() { E.showMenu(hrmMenu); isHrmMenu = true; },
-  "Magnetometer": function() { E.showMenu(magMenu); isMagMenu = true; }
+  "Magnetometer": function() { E.showMenu(magMenu); isMagMenu = true; },
 };
 let accMenu = {
   "": { "title" : "- Acceleration -" },
+  "<-": function() { E.showMenu(mainMenu); isAccMenu = false; },
   "State": { value: "On" },
   "x": { value: null },
   "y": { value: null },
   "z": { value: null },
-  "<-": function() { E.showMenu(mainMenu); isAccMenu = false; },
 };
 let barMenu = {
   "": { "title" : "-  Barometer   -" },
+  "<-": function() { E.showMenu(mainMenu); isBarMenu = false; },
   "State": {
     value: isBarEnabled,
     format: v => v ? "On" : "Off",
@@ -58,10 +60,10 @@ let barMenu = {
   "Altitude": { value: null },
   "Press": { value: null },
   "Temp": { value: null },
-  "<-": function() { E.showMenu(mainMenu); isBarMenu = false; },
 };
 let gpsMenu = {
   "": { "title" : "-      GPS     -" },
+  "<-": function() { E.showMenu(mainMenu); isGpsMenu = false; },
   "State": {
     value: isGpsEnabled,
     format: v => v ? "On" : "Off",
@@ -72,10 +74,10 @@ let gpsMenu = {
   "Altitude": { value: null },
   "Satellites": { value: null },
   "HDOP": { value: null },
-  "<-": function() { E.showMenu(mainMenu); isGpsMenu = false; },
 };
 let hrmMenu = {
   "": { "title" : "-  Heart Rate  -" },
+  "<-": function() { E.showMenu(mainMenu); isHrmMenu = false; },
   "State": {
     value: isHrmEnabled,
     format: v => v ? "On" : "Off",
@@ -83,10 +85,10 @@ let hrmMenu = {
   },
   "BPM": { value: null },
   "Confidence": { value: null },
-  "<-": function() { E.showMenu(mainMenu); isHrmMenu = false; },
 };
 let magMenu = {
   "": { "title" : "- Magnetometer -" },
+  "<-": function() { E.showMenu(mainMenu); isMagMenu = false; },
   "State": {
     value: isMagEnabled,
     format: v => v ? "On" : "Off",
@@ -96,7 +98,6 @@ let magMenu = {
   "y": { value: null },
   "z": { value: null },
   "Heading": { value: null },
-  "<-": function() { E.showMenu(mainMenu); isMagMenu = false; },
 };
 
 
